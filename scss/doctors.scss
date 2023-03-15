@@ -1,0 +1,125 @@
+.doctors {
+  padding-bottom: 90px;
+  text-align: center;
+
+  &__title {
+    display: inline-block;
+    padding-top: 37px;
+    @extend %title-style;
+    position: relative;
+    margin-bottom: 35px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url('../images/icons/icon-doctors.svg');
+      width: 32px;
+      height: 32px;
+      top: 0;
+      left: 35px;
+    }
+  }
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__cart {
+    display: flex;
+    min-height: 150px;
+    padding: 25px;
+    background-color: $white;
+    box-shadow: 0px 4px 10px rgba(175, 213, 254, 0.5);
+    border-radius: 5px;
+    transition: box-shadow 0.5s;
+    cursor: pointer;
+
+    &:hover {
+     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    &:focus {
+      @extend %focuse-style;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &__box {
+    margin-right: 20px;
+  }
+
+  &__box-img,
+  &__box {
+    max-width: 100px;
+    width: 100%;
+    height: auto;
+  }
+
+  &__box-img {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  &__name,
+  &__position,
+  &__education {
+    margin-bottom: 10px;
+  }
+
+  &__name {
+    @extend %roboto-500;
+    font-size: 16px;
+    line-height: 19px;
+    color: $black;
+  }
+
+  &__position {
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: $lg) {
+  .doctors {
+    &__wrap {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 15px;
+      margin-bottom: 25px;
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .doctors {
+    padding-bottom: 50px;
+
+    &__title {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+@media (max-width: $sm) {
+  .doctors {
+
+    &__cart {
+      padding: 15px;
+    }
+
+    &__box-img,
+    &__box {
+      max-width: 60px;
+    }
+  }
+}

@@ -1,0 +1,205 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: $bg-color;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 0;
+
+  &__connected {
+    display: none;
+    justify-content: space-between;
+    padding: 24px 0;
+  }
+
+  &__btn {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 60px;
+  }
+
+  &__link {
+    @extend %opensans-400;
+    line-height: 1.7px;
+    color: $title-color;
+    position: relative;
+    padding-left: 29px;
+    transition: color 0.3s,
+      border-color 0.3s;
+
+    &:hover {
+      color: $content-blue;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      @extend %focuse-style;
+    }
+  }
+
+  &__link--lock {
+    padding-left: 0;
+    padding-right: 32px;
+  }
+
+  &__link--profile {
+    padding-left: 27px;
+  }
+
+  &__link--doctors::after,
+  &__link--heart::after,
+  &__link--lock::after,
+  &__link--profile::after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: -5px;
+  }
+
+  &__link--doctors::after {
+    background-image: url('../images/icons/header-doctors.svg');
+    left: 0;
+  }
+
+  &__link--heart::after {
+    background-image: url('../images/icons/icon-heart-head.svg');
+    left: 0;
+  }
+
+  &__link--lock::after {
+    background-image: url('../images/icons/icon-lock.svg');
+    width: 20px;
+    height: 20px;
+    top: -3px;
+    right: 4px;
+  }
+
+  &__link--profile::after {
+    background-image: url('../images/icons/icon-profile.svg');
+    width: 20px;
+    height: 20px;
+    top: -3px;
+    left: 0;
+  }
+}
+
+
+@media (max-width: $lg) {
+  .menu {
+    &__item:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .menu {
+    &__list {
+      transform: translateY(-200%);
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: $bg-color;
+      display: block;
+      text-align: center;
+      padding-top: 70px;
+      z-index: 1;
+      transition: transform 0.3s;
+
+      &.active {
+        transform: translateY(0%);
+        overflow-y: auto;
+      }
+    }
+
+    &__item:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+
+    &__link {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    &__link--doctors::after,
+    &__link--heart::after,
+    &__link--lock::after,
+    &__link--profile::after {
+      display: none;
+    }
+
+    &__btn {
+      display: block;
+      width: 30px;
+      height: 20px;
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      position: relative;
+      z-index: 5;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        background-color: $title-color;
+        transition: transform 0.3s,
+      }
+
+      &::before {
+        bottom: 0;
+      }
+
+      &::after {
+        top: 0;
+      }
+
+      span {
+        position: absolute;
+        width: 100%;
+        top: 9px;
+        left: 0;
+        height: 2px;
+        background-color: $title-color;
+        transition: transform 0.3s,
+      }
+
+      &.active::after {
+        transform: rotate(45deg);
+        top: 9px;
+      }
+
+      &.active::before {
+        transform: rotate(-45deg);
+        bottom: 9px;
+      }
+
+      &.active span {
+        transform: scale(0);
+      }
+    }
+  }
+}

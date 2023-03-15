@@ -1,0 +1,153 @@
+.disease {
+
+  &__box,
+  &__inner {
+    background: $white;
+    box-shadow: 0px 4px 10px rgba(175, 213, 254, 0.5);
+    border-radius: 5px;
+    padding: 50px;
+    margin-bottom: 50px;
+  }
+
+  &__title {
+    @extend %rubic-400;
+    font-size: 48px;
+    line-height: 57px;
+    letter-spacing: 0.03em;
+    color: $black;
+    margin-bottom: 20px;
+  }
+
+  &__subtitle {
+    @extend %rubic-400;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: 0.03em;
+    color: rgba(4, 15, 45, 0.7);
+    margin-bottom: 20px;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 14px;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      top: 7px;
+      left: 0;
+      border-radius: 50%;
+      background-color: #1260FF;
+    }
+  }
+
+  &__link {
+    font-size: 16px;
+    line-height: 22px;
+    color: #1143A8;
+    transition: text-decoration 0.7s;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus,
+    &:active {
+      color: #1143a899;
+    }
+  }
+
+  &__box {
+    p {
+      @extend %opensans-400;
+      margin-bottom: 20px;
+    }
+
+    h5 {
+      @extend %opensans-700;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      list-style: disc;
+      @extend %opensans-400;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+@media (max-width: $lg) {
+
+  .disease {
+
+    &__box,
+    &__inner {
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    &__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .disease {
+    &__title {
+      font-size: 38px;
+      margin-bottom: 5px;
+    }
+
+    &__subtitle {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    &__link {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: $sm) {
+  .disease {
+    &__title {
+      font-size: 28px;
+      margin-bottom: 2px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    &__inner {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__box {
+      p {
+        margin-bottom: 10px;
+      }
+
+      h5 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

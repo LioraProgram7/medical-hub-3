@@ -1,0 +1,328 @@
+.grade {
+  border-radius: 25px 25px 0px 0px;
+  box-shadow: 0px 4px 10px rgba(175, 213, 254, 0.502);
+  margin: 0 20px;
+  @extend %bg-img;
+
+  &__content {
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  &__box {
+    display: inline-block;
+    justify-content: center;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  &__box-img {
+    display: inherit;
+  }
+
+  &__rate {
+    @extend %opensans-500;
+    color: $white;
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    @extend %rubic-500;
+    font-size: 36px;
+    line-height: 43px;
+    color: $white;
+  }
+
+  &__subtitle {
+    padding: 33px 0;
+    background-color: $white;
+    border-radius: 0px 0px 25px 25px;
+    text-align: center;
+    margin: 0 20px;
+    margin-bottom: 50px;
+  }
+
+  &__subtext {
+    @extend %opensans-500;
+    color: #FF000F;
+  }
+}
+
+.grade-box {
+  &__inner {
+    background-color: $white;
+    box-shadow: 0px 4px 10px rgba(175, 213, 254, 0.5);
+    border-radius: 5px;
+    padding: 40px 130px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  &__number {
+    line-height: 19px;
+    color: rgba(4, 15, 45, 0.7);
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: rgba(4, 15, 45, 0.7);
+    padding-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  &__questionnaire {
+    display: flex;
+    flex-direction: column;
+    text-align-last: left;
+  }
+
+  &__label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding-left: 35px;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    &:hover input~.grade-box__checkbox {
+      background-color: #ccc;
+    }
+
+    & input:checked~.grade-box__checkbox {
+      background-color: #F0434D;
+    }
+
+  }
+
+  &__input {
+    @extend %checkbox-hidden;
+  }
+
+  &__checkbox {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #F0434D;
+    border-radius: 50%;
+    top: 0;
+    left: 0px;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: $black;
+  }
+}
+
+.regulations {
+  text-align: left;
+  padding: 0;
+
+  &__top,
+  &__middle,
+  &__bottom {
+    padding: 40px 130px;
+    border-bottom: 1px solid rgba(18, 96, 255, 0.3);
+  }
+
+  &__title {
+    @extend %roboto-500;
+    font-size: 30px;
+    line-height: 35px;
+    color: rgba(4, 15, 45, 0.7);
+    padding: 0;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__text {
+    @extend %opensans-700;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+
+  &__text-read,
+  &__item-read {
+    color: #FF000F;
+  }
+
+  &__subtitle {
+    @extend %opensans-700;
+    font-size: 16px;
+    line-height: 22px;
+    color: $black;
+    margin-bottom: 15px;
+  }
+
+  &__item {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__text-orange,
+  &__item-orange {
+    color: #FD7900;
+  }
+
+  &__text-green,
+  &__item-green {
+    color: #2C8A00
+  }
+
+
+  &__form {
+    text-align: center;
+  }
+
+  &__textarea {
+    width: 100%;
+    max-width: 100%;
+    background-color: $white;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    padding: 30px;
+    line-height: 19px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px;
+  }
+
+  &__btn {
+    width: 236px;
+    height: 51px;
+    background-color: #1260FF;
+    box-shadow: 0px 4px 15px rgba(0, 36, 75, 0.25);
+    border: none;
+    border-radius: 5px;
+    line-height: 17px;
+    color: $white;
+    margin-bottom: 100px;
+    resize: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .doctors {
+
+    &__box-img,
+    &__box {
+      max-width: 50px;
+    }
+
+    &__box {
+      margin-bottom: 10px;
+    }
+  }
+
+  .grade {
+    &__name {
+      font-size: 26px;
+    }
+
+    &__content {
+      padding: 25px 0;
+    }
+
+    &__subtitle {
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+  }
+
+  .grade-box {
+    &__inner {
+      padding: 40px 80px;
+      margin-bottom: 30px;
+    }
+
+    &__title {
+      font-size: 22px;
+      padding-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    &__label:not(:last-child) {
+      margin-bottom: 15px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+
+    &__checkbox {
+      width: 20px;
+      height: 20px;
+      top: 1px;
+    }
+  }
+
+  .regulations {
+    padding: 0;
+
+    &__top,
+    &__bottom,
+    &__middle {
+      padding: 30px 30px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+  }
+}
+
+
+@media (max-width: 576px) {
+  .grade-box {
+    &__inner {
+      padding: 30px 50px;
+    }
+
+    &__title {
+      font-size: 18px;
+      line-height: 25px;
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+
+    &__checkbox {
+      width: 18px;
+      height: 18px;
+      left: -25px;
+      top: 3px;
+    }
+  }
+
+  .regulations {
+    padding: 0;
+
+    __text {
+      font-size: 14px;
+    }
+
+    &__item {
+      font-size: 14px;
+    }
+
+    &__textarea {
+      margin-bottom: 30px;
+    }
+
+    &__btn {
+      margin-bottom: 50px;
+    }
+
+  }
+
+
+}

@@ -1,0 +1,58 @@
+<?php
+class log {
+    const PATH = "/home/l95243/logs/";
+
+    static function write($message, $header, $filename="medicalhub.log") {
+        $remote_addr = "server"; //localhost
+        if (isset($_SERVER['REMOTE_ADDR']))
+            $remote_addr = $_SERVER['REMOTE_ADDR'];
+        $log_file = fopen(log::PATH . $filename, "a");
+        $date = date("d/m/Y H:i:s");
+        $header = "$date $remote_addr $header: ";
+        fwrite($log_file, $header . $message . "\n");
+        fclose($log_file);
+    }
+
+    static function api_access($message) { log::write($message, "api-access"); }
+
+    static function api_request($message, $method="") { 
+        $header = "api-";
+        if (!empty($method))
+            $header .= "$method-";
+        $header .= "request";
+        log::write($message, $header); 
+    }
+
+    static function mysql($message) { log::write($message, "mysql"); }
+
+    static function daemon($message) { log::write($message, "daemon"); }
+
+    static function smmc($message) { log::write($message, "smmc"); }
+
+    static function api_request_error($message, $sent, $recv, $method="", $save=true) {
+        $header = "api-";
+        if (!empty($method))
+            $header .= "$method-";
+        $header .= "request";
+        $error_uid = uniqid(random_int(1, 20));
+        if (!$save)
+            $error_uid = $recv->error->error_code;
+        $header .= "-error[$error_uid]";
+        log::write($message, $header);
+        if ($save) {
+            $message .= "\nsent " . json_encode($sent, JSON_PRETTY_PRINT);
+            $message .= "\nrecv " . json_encode($recv, JSON_PRETTY_PRINT);
+            log::write($message, $header, "medicalhub.errors.log");
+        }
+    }
+
+    static function mysql_error($message, $values) {
+        $header = "mysql";
+        $error_uid = uniqid(random_int(1, 20));
+        $header .= "-error[$error_uid]";
+        log::write($message, $header);
+        $message .= "\nvalues " . json_encode($values, JSON_PRETTY_PRINT);
+        log::write($message, $header, "medicalhub.errors.log");
+    }
+}
+?>
